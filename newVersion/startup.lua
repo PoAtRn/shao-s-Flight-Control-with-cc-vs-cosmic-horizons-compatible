@@ -1196,7 +1196,6 @@ function flight_control:spaceShip()
                 elseif dimension == "j_1900" then
                     movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 1.876, 0)))
                 end
-                end
                 self:pd_mov_control(movFor:copy(), 1, profile.spaceShip_move_D)
             else
                 self:pd_mov_control(movFor:copy(), 1, 0.2)
