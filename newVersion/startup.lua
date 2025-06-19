@@ -1105,6 +1105,30 @@ function flight_control:spaceShip()
                 mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 10, 0)))
             elseif dimension == "earth_moon" then
                 mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 1.66, 0)))
+            elseif dimension == "jupiterlands" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 23.8, 0)))
+            elseif dimension == "marslands" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 3.8, 0)))
+            elseif dimension == "mercury_wasteland" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 3.9, 0)))
+            elseif dimension == "neptune_lands" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 11.37, 0)))
+            elseif dimension == "plutowastelands" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 0.632, 0)))
+            elseif dimension == "saturn_lands" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 10.64, 0)))
+            elseif dimension == "uranus_lands" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 8.86, 0)))
+            elseif dimension == "venuslands" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 9.04, 0)))
+            elseif dimension == "europa_lands" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 1.3, 0)))
+            elseif dimension == "glacio_lands" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 2.3, 0)))
+            elseif dimension == "j_1407blands" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 29.8, 0)))
+            elseif dimension == "j_1900" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 1.876, 0)))
             end
             self:pd_mov_control(mov, 1, profile.spaceShip_move_D)
             self:gotoRot_PD(rot, 0.3, 9)
@@ -1147,6 +1171,31 @@ function flight_control:spaceShip()
                     movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 10, 0)))
                 elseif dimension == "earth_moon" then
                     movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 1.66, 0)))
+                elseif dimension == "jupiterlands" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 23.8, 0)))
+                elseif dimension == "marslands" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 3.8, 0)))
+                elseif dimension == "mercury_wasteland" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 3.9, 0)))
+                elseif dimension == "neptune_lands" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 11.37, 0)))
+                elseif dimension == "plutowastelands" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 0.632, 0)))
+                elseif dimension == "saturn_lands" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 10.64, 0)))
+                elseif dimension == "uranus_lands" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 8.86, 0)))
+                elseif dimension == "venuslands" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 9.04, 0)))
+                elseif dimension == "europa_lands" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 1.3, 0)))
+                elseif dimension == "glacio_lands" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 2.3, 0)))
+                elseif dimension == "j_1407blands" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 29.8, 0)))
+                elseif dimension == "j_1900" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 1.876, 0)))
+                end
                 end
                 self:pd_mov_control(movFor:copy(), 1, profile.spaceShip_move_D)
             else
