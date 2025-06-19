@@ -1104,6 +1104,9 @@ function flight_control:spaceShip()
             if dimension ~= "solar_system" then
                 mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 10, 0)))
             end
+            if dimension == "earth_moon" then
+                mov:add(quat.vecRot(quat.nega(self.rot), newVec(0, 1.66, 0)))
+            end
             self:pd_mov_control(mov, 1, profile.spaceShip_move_D)
             self:gotoRot_PD(rot, 0.3, 9)
         else
@@ -1143,6 +1146,9 @@ function flight_control:spaceShip()
             if properties.coupled then
                 if dimension ~= "solar_system" then
                     movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 10, 0)))
+                end
+                if dimension == "earth_moon" then
+                    movFor:add(quat.vecRot(quat.nega(self.rot), newVec(0, 1.66, 0)))
                 end
                 self:pd_mov_control(movFor:copy(), 1, profile.spaceShip_move_D)
             else
