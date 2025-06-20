@@ -1070,11 +1070,29 @@ function flight_control:getCtAndProfile()
     return controllers.activated, properties.profile[properties.profileIndex]
 end
 
+function length(a, b, c)
+    return math.sqrt(a^2 + b^2 + c^2)
+end
+
 local press_ct_1 = 0
 function flight_control:spaceShip()
     dimension = coordinate.getSelfDimensionType()
     local movFor, rotFor = newVec(), newVec()
     local ct, profile = self:getCtAndProfile()
+
+    local spaceShip_forward = profile.spaceShip_forward
+    local spaceShip_sideMove = profile.spaceShip_sideMove
+    local spaceShip_vertMove = profile.spaceShip_vertMove
+
+    local power_per_mass_request = length(spaceShip_forward, spaceShip_sideMove, spaceShip_vertMove)
+    local power_per_mass = (engine_controller.getMassCanDrive() - engine_controller.getMass()) / (2 * engine_controller.getMass())
+    if power_per_mass_request > power_per_mass then
+        local ratio = power_per_mass / power_per_mass_request
+        spaceShip_forward = spaceShip_forward * ratio
+        spaceShip_sideMove = spaceShip_sideMove * ratio
+        spaceShip_vertMove = spaceShip_vertMove * ratio
+    end
+
     --self:gotoPos(self.lastPos)
     --self:gotoRot(self:genRotByEuler(0, 0, math.rad(120)))
     
@@ -1135,9 +1153,9 @@ function flight_control:spaceShip()
         else
             if ct then
                 local throttle_level = properties.spaceShipThrottle * 0.33 + 0.01
-                local PD_FROM_PROFILE = rotController(new2dVec(profile.spaceShip_forward, profile.spaceShip_sideMove))
+                local PD_FROM_PROFILE = rotController(new2dVec(spaceShip_forward, spaceShip_sideMove))
                 movFor.x = math.deg(math.asin(ct.BTStickRot.y)) * math.abs(PD_FROM_PROFILE.x) * throttle_level
-                movFor.y = math.deg(math.asin(ct.LeftStick.y)) * profile.spaceShip_vertMove * throttle_level
+                movFor.y = math.deg(math.asin(ct.LeftStick.y)) * spaceShip_vertMove * throttle_level
                 movFor.z = math.deg(math.asin(ct.BTStickRot.x)) * math.abs(PD_FROM_PROFILE.y) * throttle_level
                 movFor:scale(0.5)
                 if ct.LeftJoyClick then
